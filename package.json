@@ -1,0 +1,11 @@
+{
+  "name": "ejercicio-fundamentos-nodejs",
+  "version": "1.0.0",
+  "description": "simulación envio datos temperatura sensor a una api",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pedro Benjamin Peña Snow",
+  "license": "ISC"
+}
