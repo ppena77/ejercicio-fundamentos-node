@@ -41,6 +41,15 @@ const addSentData = (data) => {
     })
 };
 
+// Para registrar los datos del objeto JSON temporal en el archivo lecturas
+const registerJsonToFile = () => {
+    return new Promise( (resolve, reject) => {
+        const jsonText = JSON.stringify(temporalJson);
+        fs.writeFileSync('lecturas.json', jsonText);
+        resolve();
+    })
+}
+
 
 // * EXPRESS ROUTES
 
@@ -50,6 +59,7 @@ app.post('/temp', (req, res) => {
     // Iniciamos cadena de procesos en el orden deseado
     loadJsonFileData()
         .then(addSentData(data))
+        .then(registerJsonToFile())
         .then(res.send('Data recieved and registered'))
         .catch(error => console.log(error));    
 });
