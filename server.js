@@ -6,10 +6,12 @@ const fs = require('fs');
 
 
 // * INICIAR EXPRESS
+
 const app = express();
 
 
 // * EXPRESS MIDDLEWARE
+
 app.use(bodyParser.json()); //Para poder capturar json en el body del request que se manda al servidor
 
 
@@ -39,11 +41,6 @@ const addSentData = (data) => {
     })
 };
 
-// const appendDataToFile = new Promise((resolve, reject) => {
-//     fs.appendFileSync('lecturas.json', temporalJson);
-//     resolve();    
-// });
-
 
 // * EXPRESS ROUTES
 
@@ -56,6 +53,7 @@ app.post('/temp', (req, res) => {
         .then(res.send('Data recieved and registered'))
         .catch(error => console.log(error));    
 });
+
 
 // * EXPREESS LISTENING IN
 
