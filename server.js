@@ -17,7 +17,7 @@ app.use(bodyParser.json()); //Para poder capturar json en el body del request qu
 
 // * DECLARACIÓN DE VARIABLES Y FUNCIONES
 
-// Para manipular los datos JSON, tanto los que recibe el servidor, como los que se almacenan en el archivo local lecturas, creamos un array vacío
+// Para manipular los datos JSON, tanto los que recibe el servidor, como los que se almacenan en el archivo local lecturas, creamos un array vacío donde almacenaremos los datos de forma temporal
 let temporalJson = [];
 
 
@@ -36,12 +36,12 @@ const loadJsonFileData = () => {
     })
 };
 
-// Para añadir datos JSON mandados al servidor en nuestro objeto JSON temporal
+// Para añadir datos JSON mandados al servidor en nuestro array temporal
 const addSentData = (data) => {
     return new Promise( (resolve, reject) => {
         try {
             temporalJson.push(data);
-            console.log('Recieved Json data added to array');
+            console.log('Recieved Json data added to array ', data.fecha);
             resolve();
         } catch (error) {
             reject(error);
@@ -62,6 +62,8 @@ const registerJsonToFile = () => {
         }        
     })
 }
+
+/* Hemos declarado todas las funciones anteriores como promesas, ya que, aunque a nivel local no van a dar problemas, en un entorno de producción real, todas estas funciones podrían tardar en ejecutarse, ya sea porque el archivo local Json pese mucho y tarde en "leerse", porque después haya que guardar una cantidad de datos grande en dicho archivo, o porque el hosting del servidor tarde en responder o procesar la petición */
 
 
 // * EXPRESS ROUTES
